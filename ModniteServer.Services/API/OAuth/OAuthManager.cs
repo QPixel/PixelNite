@@ -47,7 +47,7 @@ namespace ModniteServer.API.OAuth
         /// <returns>A valid OAuth token.</returns>
         public static OAuthToken CreateToken(int expiresInSeconds)
         {
-            byte[] tokenRaw = new byte[20];
+            byte[] tokenRaw = new byte[32];
 
             using (var rng = new RNGCryptoServiceProvider())
                 rng.GetNonZeroBytes(tokenRaw);

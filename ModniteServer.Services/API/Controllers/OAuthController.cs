@@ -54,14 +54,38 @@ namespace ModniteServer.API.Controllers
         [Route("GET", "/account/api/oauth/verify")]
         public void VerifyToken()
         {
-            if (Authorize())
+            if (!Authorize())
             {
-                Response.StatusCode = 204;
+                Response.StatusCode = 404;
             }
-            else
+            string authorization = Request.Headers["Authorization"];
+            string authToken = authorization.Split(' ')[1];
+            Account account = null;
+
+            account = AccountManager.GetAccount("imqpixel");
+            var token = OAuthManager.CreateToken((int)UserAccessTokenExpiry.TotalSeconds);
+
+            var response = new
             {
-                Response.StatusCode = 403;
-            }
+                access_token = authToken,
+                expires_in = token.ExpiresIn,
+                expires_at = token.ExpiresAt.ToDateTimeString(),
+                token_type = "bearer",
+                refresh_token = token.Token, // I know, I know...
+                refresh_expires = token.ExpiresIn,
+                refresh_expires_at = token.ExpiresAt.ToDateTimeString(),
+                account_id = account.AccountId,
+                client_id = FortniteClientId.Split(':')[0],
+                internal_client = true,
+                client_service = "fortnite",
+                displayName = account.DisplayName,
+                app = "fortnite",
+                in_app_id = account.AccountId,
+                device_id = "164fb25bb44e42c5a027977d0d5da800"
+            };
+            Response.StatusCode = 200;
+            Response.ContentType = "application/json";
+            Response.Write(JsonConvert.SerializeObject(response));
         }
 
         /// <summary>
@@ -86,6 +110,39 @@ namespace ModniteServer.API.Controllers
             string password = Query["password"];
 
             string passwordHash;
+
+            if (ApiConfig.Current.AutoLogin == true)
+            {
+                Account account1 = null;
+                account1 = AccountManager.GetAccount("imqpixel");
+
+                var token = OAuthManager.CreateToken((int)UserAccessTokenExpiry.TotalSeconds);
+
+                var response = new
+                {
+                    access_token = token.Token,
+                    expires_in = token.ExpiresIn,
+                    expires_at = token.ExpiresAt.ToDateTimeString(),
+                    token_type = "bearer",
+                    refresh_token = token.Token, // I know, I know...
+                    refresh_expires = token.ExpiresIn,
+                    refresh_expires_at = token.ExpiresAt.ToDateTimeString(),
+                    account_id = account1.AccountId,
+                    client_id = FortniteClientId.Split(':')[0],
+                    internal_client = true,
+                    client_service = "fortnite",
+                    displayName = account1.DisplayName,
+                    app = "fortnite",
+                    in_app_id = account1.AccountId,
+                    device_id = "164fb25bb44e42c5a027977d0d5da800"
+                };
+
+                Response.StatusCode = 200;
+                Response.ContentType = "application/json";
+                Response.Write(JsonConvert.SerializeObject(response));
+                return;
+
+            }
             using (var sha256 = new SHA256Managed())
             {
                 byte[] hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
@@ -139,8 +196,10 @@ namespace ModniteServer.API.Controllers
                     client_id = FortniteClientId.Split(':')[0],
                     internal_client = true,
                     client_service = "fortnite",
+                    displayName = account.DisplayName,
                     app = "fortnite",
-                    in_app_id = account.AccountId
+                    in_app_id = account.AccountId,
+                    device_id = "164fb25bb44e42c5a027977d0d5da800"
                 };
 
                 Response.StatusCode = 200;
@@ -174,7 +233,8 @@ namespace ModniteServer.API.Controllers
                     }
                 }
             }
-
+            Account account2 = null;
+            account2 = AccountManager.GetAccount("imqpixel");
             if (hasValidAuth)
             {
                 var token = OAuthManager.CreateToken((int)ClientAccessTokenExpiry.TotalSeconds);
@@ -185,9 +245,17 @@ namespace ModniteServer.API.Controllers
                     expires_in = token.ExpiresIn,
                     expires_at = token.ExpiresAt.ToDateTimeString(),
                     token_type = "bearer",
+                    refresh_token = token.Token, // I know, I know...
+                    refresh_expires = token.ExpiresIn,
+                    refresh_expires_at = token.ExpiresAt.ToDateTimeString(),
+                    account_id = account2.AccountId,
                     client_id = FortniteClientId.Split(':')[0],
                     internal_client = true,
-                    client_service = "fortnite"
+                    //client_service = "fortnite",
+                    displayName = account2.DisplayName,
+                    app = "fortnite",
+                    in_app_id = account2.AccountId,
+                    device_id = "164fb25bb44e42c5a027977d0d5da800"
                 };
 
                 Response.StatusCode = 200;

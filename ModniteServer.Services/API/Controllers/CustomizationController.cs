@@ -5,7 +5,8 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Diagnostics;
+using System.Linq;
 namespace ModniteServer.API.Controllers
 {
     internal sealed class CustomizationController : Controller
@@ -13,7 +14,7 @@ namespace ModniteServer.API.Controllers
         /// <summary>
         /// Updates the player's equipped item choice.
         /// </summary>
-        [Route("POST", "/fortnite/api/game/v2/profile/*/client/EquipBattleRoyaleCustomization")]
+        [Route("POST", "/fortnite/api/game/v2/profile/*/client/SetCosmeticLockerSlot")]
         public void EquipBattleRoyaleCustomization()
         {
             string accountId = Request.Url.Segments[Request.Url.Segments.Length - 3].Replace("/", "");
@@ -25,89 +26,62 @@ namespace ModniteServer.API.Controllers
             Request.InputStream.Read(buffer, 0, buffer.Length);
 
             var request = JObject.Parse(Encoding.UTF8.GetString(buffer));
-            string slotName = (string)request["slotName"];
+            string lockeritem = (string)request["lockerItem"];
+            string slotName = (string)request["category"];
             string itemToSlot = (string)request["itemToSlot"];
-            int indexWithinSlot = (int)request["indexWithinSlot"];
-            var variantUpdates = new List<object>(); // TODO: variantUpdates
+            int indexWithinSlot = (int)request["slotIndex"];
+            Account account = AccountManager.GetAccount(accountId);
 
-            string name = "";
+
             switch (slotName)
             {
                 case "Character":
-                    name = "favorite_character";
+                    account.EquippedItems["favorite_character"] = itemToSlot;
                     break;
-
                 case "Dance":
-                    name = "favorite_dance";
+                    string dance = "favorite_dance" + indexWithinSlot;
+                    account.EquippedItems[dance] = itemToSlot;
                     break;
-
                 case "Backpack":
-                    name = "favorite_backpack";
+                    account.EquippedItems["favorite_backpack"] = itemToSlot;
                     break;
-
                 case "Pickaxe":
-                    name = "favorite_pickaxe";
+                    account.EquippedItems["favorite_pickaxe"] = itemToSlot;
                     break;
-
                 case "Glider":
-                    name = "favorite_glider";
+                    account.EquippedItems["favorite_glider"] = itemToSlot;
                     break;
-
                 case "SkyDiveContrail":
-                    name = "favorite_skydivecontrail";
+                    account.EquippedItems["favorite_skydivecontrail"] = itemToSlot;
                     break;
-
                 case "MusicPack":
-                    name = "favorite_musicpack";
+                    account.EquippedItems["favorite_musicpack"] = itemToSlot;
                     break;
-
                 case "LoadingScreen":
-                    name = "favorite_loadingscreen";
+                    account.EquippedItems["favorite_loadingscreen"] = itemToSlot;
                     break;
-
-                // TODO: add support for sprays
-
                 default:
-                    Log.Error($"'{accountId}' tried to update unknown item slot '{slotName}' in profile '{profileId}'");
-                    Response.StatusCode = 500;
-                    return;
+                    break;
+                    
             }
-
-            object profileChange;
-            Account account = AccountManager.GetAccount(accountId);
-
-            if (account.EquippedItems == null)
-                account.EquippedItems = ApiConfig.Current.EquippedItems; // updates previous accounts that don't have that value
-
-            if (name == "favorite_dance")
+            
+            string Character = account.EquippedItems["favorite_character"];
+            string[] Dance = new string[6];
+            for (int i =0; i < Dance.Length; i++)
             {
-                // Dances use an array
-                string dance = "favorite_dance" + indexWithinSlot;
-                account.EquippedItems[dance] = itemToSlot;
-                string[] slots = new string[6];
-                for (int i = 0; i < slots.Length; i++)
-                {
-                    slots[i] = account.EquippedItems["favorite_dance" + i];
-                }
-                slots[indexWithinSlot] = itemToSlot;
-                profileChange = new
-                {
-                    changeType = "statModified",
-                    name,
-                    value = slots
-                };
+                Dance[i] = account.EquippedItems["favorite_dance" + i];
             }
-            else
+            string[] ItemWrap = new string[7];
+            for (int i = 0; i < ItemWrap.Length; i++)
             {
-                account.EquippedItems[name] = itemToSlot; // add it to equipped items
-                profileChange = new
-                {
-                    changeType = "statModified",
-                    name,
-                    value = itemToSlot
-                };
+                ItemWrap[i] = "";
             }
-
+            string Glider = string.IsNullOrEmpty(account.EquippedItems["favorite_glider"]) ? null : account.EquippedItems["favorite_glider"];
+            string Pickaxe = string.IsNullOrEmpty(account.EquippedItems["favorite_pickaxe"]) ? null : account.EquippedItems["favorite_pickaxe"];
+            string Backpack = string.IsNullOrEmpty(account.EquippedItems["favorite_backpack"]) ? null : account.EquippedItems["favorite_backpack"];
+            string LoadingScreen = string.IsNullOrEmpty(account.EquippedItems["favorite_loadingscreen"]) ? null : account.EquippedItems["favorite_loadingscreen"];
+            string MusicPack = string.IsNullOrEmpty(account.EquippedItems["favorite_musicpack"]) ? null : account.EquippedItems["favorite_musicpack"];
+            string SkyDiveContrail = string.IsNullOrEmpty(account.EquippedItems["favorite_skydivecontrail"]) ? null : account.EquippedItems["favorite_skydivecontrail"];
             var response = new
             {
                 profileRevision = rvn + 1,
@@ -115,13 +89,91 @@ namespace ModniteServer.API.Controllers
                 profileChangesBaseRevision = rvn,
                 profileChanges = new List<object>
                 {
-                    profileChange
-                }
+                    new
+                    {
+                        changeType = "itemAttrChanged",
+                        attributeName = "locker_slots_data",
+                        itemId = lockeritem,
+                        attributeValue = new
+                        {
+                            slots = new
+                            {
+                                Glider = new {
+                                    items = new List<object>
+                                    {
+                                        Glider
+                                    }
+                                },
+                                Dance = new
+                                {
+                                    items = Dance,
+                                    activeVariants = new string[6]
+                                },
+                                SkyDiveContrail = new
+                                {
+                                    items = new List<object>
+                                    {
+                                        SkyDiveContrail
+                                    }
+                                },
+                                LoadingScreen = new
+                                {
+                                    items = new List<object>
+                                    {
+                                        LoadingScreen
+                                    }
+                                },
+                                Pickaxe = new
+                                {
+                                    items = new List<object>
+                                    {
+                                        Pickaxe
+                                    }
+                                },
+                                ItemWrap = new
+                                {
+                                    items = ItemWrap
+                                },
+                                MusicPack = new
+                                {
+                                    items = new List<object>
+                                    {
+                                        MusicPack
+                                    }
+                                },
+                                Character = new
+                                {
+                                    items = new List<object>
+                                    {
+                                        Character
+                                    },
+                                    activeVariants = new List<object>
+                                    {
+                                       new { }
+                                    }
+                                },
+                                Backpack = new
+                                {
+                                    items = new List<object>
+                                    {
+                                        Backpack
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                },
+                serverTime = DateTime.Now.ToDateTimeString(),
+                profileCommandRevision = rvn + 1,
+                responseVersion = 1
             };
+
+            Debug.WriteLine($"{response}");
 
             // TODO: update in Account model
             Log.Information($"'{accountId}' changed favorite {slotName}");
-
+            
             Response.StatusCode = 200;
             Response.ContentType = "application/json";
             Response.Write(JsonConvert.SerializeObject(response));

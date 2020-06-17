@@ -1,0 +1,8 @@
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\bin\Release\netstandard2.0\Assets\ClientSettings.Sav
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\bin\Release\netstandard2.0\PixelNite.Services.deps.json
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\bin\Release\netstandard2.0\PixelNite.Services.dll
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Release\netstandard2.0\PixelNite.Services.csprojAssemblyReference.cache
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Release\netstandard2.0\PixelNite.Services.csproj.CoreCompileInputs.cache
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Release\netstandard2.0\PixelNite.Services.AssemblyInfoInputs.cache
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Release\netstandard2.0\PixelNite.Services.AssemblyInfo.cs
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Release\netstandard2.0\PixelNite.Services.dll

@@ -18,13 +18,16 @@ namespace ModniteServer.API.Controllers
                     status = "UP",
                     message = "Down for maintenance",
                     maintenanceUrl = (string)null,
-                    overrideCatalogIds = new string[0],
-                    allowedActions = new string[0],
+                    overrideCatalogIds = new string[1] { "a7f138b2e51945ffbfdacc1af0541053" },
+                    allowedActions = new string[2] { 
+                        "PLAY",
+                        "DOWNLOAD"
+                    },
                     banned = false, // we check for this in OAuthController
                     launcherInfoDTO = new
                     {
                         appName = "Fortnite",
-                        catalogItemId = "",
+                        catalogItemId = "4fe75bbc5a674f4f9b356b5c90567da5",
                         @namespace = "fn"
                     }
                 }

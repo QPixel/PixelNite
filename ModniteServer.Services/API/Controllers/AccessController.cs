@@ -46,8 +46,14 @@ namespace ModniteServer.API.Controllers
 
                 // Sending NO_UPDATE will cause the "Game was not launched correctly" error,
                 // so we're sending the client nothing.
-                Response.StatusCode = 204;
+                var res = new
+                {
+                    type = "NO_UPDATE"
+                };
 
+                Response.StatusCode = 200;
+                Response.ContentType = "application/json";
+                Response.Write(JsonConvert.SerializeObject(res));
                 return;
             }
 

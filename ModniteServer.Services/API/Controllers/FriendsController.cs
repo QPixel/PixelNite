@@ -59,6 +59,18 @@ namespace ModniteServer.API.Controllers
             Response.ContentType = "application/json";
             Response.Write(JsonConvert.SerializeObject(response));
         }
+        [Route("GET", "/friends/api/v1/*/blocklist")]
+        public void GetBlockList()
+        {
+
+
+            var response = new List<object>();
+
+            Response.StatusCode = 200;
+            Response.ContentType = "application/json";
+            Response.Write(JsonConvert.SerializeObject(response));
+        }
+
 
         [Route("GET", "/account/api/public/account/displayName/*")]
         public void FindFriendByDisplayName()
@@ -97,6 +109,24 @@ namespace ModniteServer.API.Controllers
             };
 
             Response.StatusCode = 404;
+            Response.ContentType = "application/json";
+            Response.Write(JsonConvert.SerializeObject(response));
+        }
+
+        [Route("GET", "/friends/api/v1/*/summary")]
+        public void FriendsSummary()
+        {
+            var response = new List<object>();
+            Response.StatusCode = 200;
+            Response.ContentType = "application/json";
+            Response.Write(JsonConvert.SerializeObject(response));
+        }
+
+        [Route("GET", "/friends/api/v1/*/recent/fortnite")]
+        public void RecentFortnite()
+        {
+            var response = new List<object>();
+            Response.StatusCode = 200;
             Response.ContentType = "application/json";
             Response.Write(JsonConvert.SerializeObject(response));
         }

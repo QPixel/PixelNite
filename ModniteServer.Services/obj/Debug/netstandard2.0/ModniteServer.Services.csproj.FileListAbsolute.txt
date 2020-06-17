@@ -1,0 +1,10 @@
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\bin\Debug\netstandard2.0\Assets\ClientSettings.Sav
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\bin\Debug\netstandard2.0\ModniteServer.Services.deps.json
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\bin\Debug\netstandard2.0\ModniteServer.Services.dll
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\bin\Debug\netstandard2.0\ModniteServer.Services.pdb
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Debug\netstandard2.0\ModniteServer.Services.AssemblyInfoInputs.cache
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Debug\netstandard2.0\ModniteServer.Services.AssemblyInfo.cs
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Debug\netstandard2.0\ModniteServer.Services.dll
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Debug\netstandard2.0\ModniteServer.Services.pdb
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Debug\netstandard2.0\ModniteServer.Services.csprojAssemblyReference.cache
+P:\Code Stuff\ModniteServer-v2\ModniteServer.Services\obj\Debug\netstandard2.0\ModniteServer.Services.csproj.CoreCompileInputs.cache

@@ -1,0 +1,10 @@
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\bin\Debug\LauncherWithAccSupport.exe.config
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\bin\Debug\LauncherWithAccSupport.exe
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\bin\Debug\LauncherWithAccSupport.pdb
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\obj\Debug\LauncherWithAccSupport.csprojAssemblyReference.cache
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\obj\Debug\LauncherWithAccSupport.Form1.resources
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\obj\Debug\LauncherWithAccSupport.Properties.Resources.resources
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\obj\Debug\LauncherWithAccSupport.csproj.GenerateResource.cache
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\obj\Debug\LauncherWithAccSupport.csproj.CoreCompileInputs.cache
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\obj\Debug\LauncherWithAccSupport.exe
+P:\Code Stuff\ModniteServer-v2\LauncherWithAccSupport\obj\Debug\LauncherWithAccSupport.pdb

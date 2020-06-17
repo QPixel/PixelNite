@@ -10,7 +10,7 @@ namespace ModniteServer.API
     public class ApiConfig
     {
         public const string ConfigFile = @"\config.json";
-
+        public const ushort configVersion = 3; 
         public const ushort DefaultApiPort = 60101;
         public const ushort DefaultXmppPort = 443;
         public const ushort DefaultMatchmakerPort = 60103;
@@ -27,12 +27,28 @@ namespace ModniteServer.API
                 string json = JsonConvert.SerializeObject(ApiConfigDefault(), Formatting.Indented);
                 File.WriteAllText(configPath, json);
             }
+            try
+            {
+                Current = JsonConvert.DeserializeObject<ApiConfig>(File.ReadAllText(configPath));
 
-            Current = JsonConvert.DeserializeObject<ApiConfig>(File.ReadAllText(configPath));
+            } catch
+            {
+                string json = JsonConvert.SerializeObject(ApiConfigDefault(), Formatting.Indented);
+                File.WriteAllText(configPath, json);
+                Log.Information("Config file was corrupted... Creating new config file.");
+                Current = JsonConvert.DeserializeObject<ApiConfig>(File.ReadAllText(configPath));
+            }
+            
 
             if (Current.AutoCreateAccounts)
                 Log.Information("New accounts will be automatically created");
+            if (Current.CfgVersion != configVersion)
+            {
+                Log.Warning("Config file is old, so the config has been updated to the latest version ");
 
+                string json = JsonConvert.SerializeObject(ApiConfigDefault(), Formatting.Indented);
+                File.WriteAllText(configPath, json);
+            }
             Log.Information($"Accepting clients on {Current.MinimumVersion.Major}.{Current.MinimumVersion.Minor} or higher {{BuildString}}",
                 $"++Fortnite+Release-{Current.MinimumVersion.Major}.{Current.MinimumVersion.Minor}-CL-{Current.MinimumVersion.Build}");
         }
@@ -46,9 +62,9 @@ namespace ModniteServer.API
             config.Port = DefaultApiPort;
             config.XmppPort = DefaultXmppPort;
             config.MatchmakerPort = DefaultMatchmakerPort;
-
+            config.CfgVersion = configVersion;
             config.AutoCreateAccounts = true;
-            config.MinimumVersionString = "6.10.4464155";
+            config.MinimumVersionString = "12.50.13044369";
 
             config.DefaultAthenaItems = new HashSet<string>
             {
@@ -80,6 +96,14 @@ namespace ModniteServer.API
                 {"favorite_dance5",""},
                 {"favorite_musicpack","" },
                 {"favorite_loadingscreen",""},
+                {"favorite_wrap",""},
+                {"favorite_wrap1",""},
+                {"favorite_wrap2",""},
+                {"favorite_wrap3",""},
+                {"favorite_wrap4",""},
+                {"favorite_wrap5",""},
+                {"favorite_wrap6", ""},
+                {"character_variant", ""}
             };
 
             config.DefaultCoreItems = new HashSet<string>
@@ -158,8 +182,8 @@ namespace ModniteServer.API
             config.LogHttpRequests = true;
             config.Log404 = true;
 #endif
-            config.Season = 6;
-
+            config.Season = 12;
+            config.AutoLogin = true;
             config.ClientEvents = new List<string>();
             return config;
         }
@@ -192,7 +216,10 @@ namespace ModniteServer.API
         /// Gets or sets the port for the API server.
         /// </summary>
         public ushort Port { get; set; }
-
+        /// <summary>
+        /// Gets or sets the port for the API server.
+        /// </summary>
+        public ushort CfgVersion { get; set; }
         /// <summary>
         /// Gets or sets the port for the XMPP server.
         /// </summary>
@@ -249,6 +276,10 @@ namespace ModniteServer.API
         /// </summary>
         public int Season { get; set; }
 
+        /// <summary>
+        /// Should Pixelnite Auto login?
+        /// </summary>
+        public bool AutoLogin { get; set; }
         /// <summary>
         /// Sets the default season level for an account
         /// </summary>

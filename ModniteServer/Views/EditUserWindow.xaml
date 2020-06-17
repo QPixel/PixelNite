@@ -5,15 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModniteServer.Views"
         mc:Ignorable="d"
-        Title="Edit User" Height="348" Width="364" ResizeMode="NoResize">
+        Title="Edit User" Height="338.71" Width="756.304" ResizeMode="CanResize">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="109*"/>
-            <ColumnDefinition Width="155*"/>
+            <ColumnDefinition Width="88*"/>
+            <ColumnDefinition Width="57*"/>
+            <ColumnDefinition Width="206*"/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="358" Grid.ColumnSpan="2">
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="319" VerticalAlignment="Top" Width="692" Grid.ColumnSpan="3">
             <TabItem Header="General">
                 <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="171*"/>
+                        <ColumnDefinition Width="172*"/>
+                    </Grid.ColumnDefinitions>
                     <Label x:Name="label" Content="AccountId" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="27"/>
                     <TextBox x:Name="Account" HorizontalAlignment="Left" Height="27" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
                     <Label x:Name="label_Copy" Content="Email" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="26"/>
@@ -30,6 +35,22 @@
                     <TextBox x:Name="XP" HorizontalAlignment="Left" Height="27" Margin="117,199,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="225"/>
                     <Label x:Name="XPText_Copy" Content="Account Level" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="27"/>
                     <TextBox x:Name="AccountLevel" HorizontalAlignment="Left" Height="27" Margin="117,231,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="225"/>
+                    <Grid Background="White" Margin="5,4,-4,-4" Grid.Column="1">
+                        <Label x:Name="label_Copy4" Content="Character" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="102" Height="31"/>
+                        <TextBox x:Name="Character" HorizontalAlignment="Left" Height="31" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
+                        <Label x:Name="label_Copy5" Content="Backpack" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="30"/>
+                        <TextBox x:Name="Backpack" HorizontalAlignment="Left" Height="30" Margin="117,47,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
+                        <Label x:Name="label_Copy6" Content="Pickaxe" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="31"/>
+                        <TextBox x:Name="Pickaxe" HorizontalAlignment="Left" Height="31" Margin="117,83,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
+                        <Label x:Name="label_Copy7" Content="Glider" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="31"/>
+                        <TextBox x:Name="Glider" HorizontalAlignment="Left" Height="31" Margin="117,120,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
+                        <Label x:Name="label_Copy8" Content="Contrail" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="31"/>
+                        <TextBox x:Name="Contrail" HorizontalAlignment="Left" Height="31" Margin="117,157,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
+                        <Label x:Name="label_Copy9" Content="Music" HorizontalAlignment="Left" Margin="10,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="30"/>
+                        <TextBox x:Name="Music" HorizontalAlignment="Left" Height="30" Margin="117,194,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
+                        <Label x:Name="label_Copy10" Content="Loading Screen" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="31"/>
+                        <TextBox x:Name="LoadingScreen" HorizontalAlignment="Left" Height="31" Margin="117,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
+                    </Grid>
                 </Grid>
             </TabItem>
             <TabItem Header="Athena">
@@ -39,29 +60,6 @@
                         <ColumnDefinition Width="103*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="athenaItems" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="251" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="332" AcceptsReturn="True" AcceptsTab="True" Grid.ColumnSpan="2"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="CoreItems">
-                <Grid Background="White">
-                    <TextBox x:Name="coreItems" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="251" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="332" AcceptsReturn="True" AcceptsTab="True" Grid.ColumnSpan="2"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="EquippedItems">
-                <Grid Background="White">
-                    <Label x:Name="label_Copy4" Content="Character" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="102" Height="31"/>
-                    <TextBox x:Name="Character" HorizontalAlignment="Left" Height="31" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
-                    <Label x:Name="label_Copy5" Content="Backpack" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="30"/>
-                    <TextBox x:Name="Backpack" HorizontalAlignment="Left" Height="30" Margin="117,47,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
-                    <Label x:Name="label_Copy6" Content="Pickage" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="31"/>
-                    <TextBox x:Name="Pickaxe" HorizontalAlignment="Left" Height="31" Margin="117,83,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
-                    <Label x:Name="label_Copy7" Content="Glider" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="31"/>
-                    <TextBox x:Name="Glider" HorizontalAlignment="Left" Height="31" Margin="117,120,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
-                    <Label x:Name="label_Copy8" Content="Contrail" HorizontalAlignment="Left" Margin="10,157,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="31"/>
-                    <TextBox x:Name="Contrail" HorizontalAlignment="Left" Height="31" Margin="117,157,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
-                    <Label x:Name="label_Copy9" Content="Music" HorizontalAlignment="Left" Margin="10,194,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="30"/>
-                    <TextBox x:Name="Music" HorizontalAlignment="Left" Height="30" Margin="117,194,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
-                    <Label x:Name="label_Copy10" Content="Loading Screen" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="107" Height="31"/>
-                    <TextBox x:Name="LoadingScreen" HorizontalAlignment="Left" Height="31" Margin="117,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="225"/>
                 </Grid>
             </TabItem>
             <TabItem Header="EquippedDances">
@@ -85,6 +83,12 @@
                     <TextBox x:Name="Dance5" HorizontalAlignment="Left" Height="36" Margin="15,225,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="247" Grid.Column="2"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="CoreItems">
+                <Grid Background="White">
+                    <TextBox x:Name="coreItems" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="251" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="332" AcceptsReturn="True" AcceptsTab="True" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+            
             <TabItem Header="Season/Battle Pass/Misc">
                 <Grid Background="White">
                     <Label x:Name="eeeeee" Content="Season (Global Value)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="125" Height="36"/>

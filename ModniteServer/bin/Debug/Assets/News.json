@@ -1,0 +1,59 @@
+{
+   "_title":"Fortnite Game",
+   "_activeDate":"2020-05-27T23:28:14.216Z",
+   "lastModified":"2020-05-27T23:28:14.216Z",
+   "_locale":"en-US",
+   "battleroyalenews":{
+      "news":{
+         "motds":[
+            {
+               "entryType":"Text",
+               "image":"https://cdn.qpixel.me/PixelNiteBanner.png",
+               "tileImage":"https://cdn.qpixel.me/PixelNiteBanner-1024x512.png",
+               "hidden":false,
+               "tabTitleOverride":"PixelNite",
+               "_type":"CommonUI Simple Message MOTD",
+               "title":"PixelNite Dev 1.0",
+               "body":"PixelNite Dev, a Private Server.",
+               "videoStreamingEnabled":false,
+               "sortingPriority":20,
+               "id":"PixelNite-Dev-Welcome",
+               "videoFullscreen":false,
+               "spotlight":true
+            }
+         ]
+      },
+      "jcr:isCheckedOut":true,
+      "_title":"battleroyalenews",
+      "header":"",
+      "style":"None",
+      "_noIndex":false,
+      "alwaysShow":true,
+      "jcr:baseVersion":"a7ca237317f1e74e4b8154-226a-4450-a3cd-c77af841e798",
+      "_activeDate":"2020-01-21T14:00:00.000Z",
+      "lastModified":"2020-05-27T23:28:14.216Z",
+      "_locale":"en-US"
+   },
+   "emergencynotice":{
+      "news":{
+         "platform_messages":[
+
+         ],
+         "_type":"Battle Royale News",
+         "messages":[
+            {
+               "hidden":false,
+               "_type":"CommonUI Simple Message Base",
+               "subgame":"br",
+               "title":"PixelNite",
+               "body":"Credit @PixelLeaks_, AsrielDev @Asriel_Dev for SSL Bypass",
+               "spotlight":true
+            }
+         ]
+      },
+      "_title":"emergencynotice",
+      "_activeDate":"2019-12-03T00:51:35.524Z",
+      "lastModified":"2020-05-27T23:28:14.216Z",
+      "_locale":"en-US"
+   }
+}

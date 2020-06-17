@@ -5,12 +5,12 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 
-[assembly: AssemblyTitle("ModniteServer")]
+[assembly: AssemblyTitle("PixelNite")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("https://modnite.net")]
-[assembly: AssemblyProduct("ModniteServer")]
-[assembly: AssemblyCopyright("Copyright © 2018 Modnite Contributors")]
+[assembly: AssemblyCompany("https://qpixel.me")]
+[assembly: AssemblyProduct("PixelNite Server")]
+[assembly: AssemblyCopyright("Copyright © 2020 QPixel || Modnite Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyVersion("1.0.0.0")]

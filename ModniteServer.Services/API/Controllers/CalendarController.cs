@@ -22,27 +22,45 @@ namespace ModniteServer.API.Controllers
                     activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
                 });
             }
-
+            clientEvents.Add(new
+            {
+                eventType = "FEC01",
+                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
+                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
+            });
+            clientEvents.Add(new
+            {
+                eventType = "FEC02",
+                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
+                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
+            });
+            clientEvents.Add(new
+            {
+                eventType = "FEC03",
+                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
+                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
+            });
+            clientEvents.Add(new
+            {
+                eventType = "FLA01",
+                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
+                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
+            });
+            clientEvents.Add(new
+            {
+                eventType = "FLCD01",
+                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
+                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
+            });
             var response = new
             {
                 channels = new Dictionary<string, object>
                 {
-                    ["client-matchmaking"] = new
-                    {
-                        // This section is used to disable game modes in certain regions.
-                        states = new[] {
-                            new
-                            {
-                                validFrom = DateTime.Now.Date.AddDays(-1).ToDateTimeString(),
-                                activeEvents = new string[0],
-                                state = new
-                                {
-                                    region = new { }
-                                }
-                            }
-                        },
-                        cacheExpire = DateTime.Now.Date.AddDays(7).ToDateTimeString()
-                    },
+                    ["standalone-store"] = new {},
+                    ["client-matchmaking"] = new {},
+                    ["tk"] = new {},
+                    ["feature-islands"] = new {},
+                    ["community-votes"] = new {},
                     ["client-events"] = new
                     {
                         // You can set event flags in config.json. Visit https://modnite.net for a list of event flags.
@@ -61,19 +79,21 @@ namespace ModniteServer.API.Controllers
                                     seasonNumber = ApiConfig.Current.Season,
                                     seasonTemplateId = "AthenaSeason:athenaseason" + ApiConfig.Current.Season,
                                     matchXpBonusPoints = 0, // Bonus XP Event
+                                    eventPunchCardTemplateId = "",
                                     seasonBegin = DateTime.Now.Date.AddDays(-30).ToDateTimeString(),
                                     seasonEnd = DateTime.Now.Date.AddDays(30).ToDateTimeString(),
                                     seasonDisplayedEnd = DateTime.Now.Date.AddDays(30).ToDateTimeString(),
                                     weeklyStoreEnd = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
                                     stwEventStoreEnd = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
-                                    stwWeeklyStoreEnd = DateTime.Now.Date.AddDays(7).ToDateTimeString()
+                                    stwWeeklyStoreEnd = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
+                                    dailyStoreEnd = DateTime.Now.Date.AddDays(7).ToDateTimeString()
                                 }
                             }
                         },
                         cacheExpire = DateTime.Now.Date.AddDays(7).ToDateTimeString()
                     }
                 },
-                eventsTimeOffsetHrs = 0.0,
+                cacheIntervalMins = 15,
                 currentTime = DateTime.Now.ToDateTimeString()
             };
 

@@ -12,7 +12,7 @@ namespace ModniteServer.ViewModels
     public sealed class MainViewModel : ObservableObject
     {
         public const int CurrentVersion = 3;
-
+        public string _version = "1.3-Beta";
         private string _title;
         private string _command;
 
@@ -22,16 +22,14 @@ namespace ModniteServer.ViewModels
 
         public MainViewModel()
         {
-            Title = "Modnite Server";
 
-            Log.Information("Modnite Server v1.3-Alpha");
-            Log.Information("Made with ❤️ by the Modnite Contributors");
-
+            Title = "PixelNite Server"; 
+            Log.Information("PixelNite Server Version-" + _version);
+            Log.Information("\n"); Log.Information("Original Code by Modnite || Alpha");
             StartServices();
 
             Log.Information("Type 'commands' to see a list of available commands");
 
-            Task.Run(CheckForUpdatesAsync);
         }
 
         /// <summary>
