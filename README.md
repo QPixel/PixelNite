@@ -1,5 +1,5 @@
 # Modnite Server
-Modnite Server was a private server for Fortnite Battle Royale. I grabbed the source before it was taken down and then after a year I "fixed" it and somewhat got it to work on chapter 2
+Modnite Server was a private server for Fortnite Battle Royale. I grabbed the source before it was taken down and then after a year I "fixed" it and somewhat got it to work on chapter 2.  If you don't know how to make this work, I won't help you. 
 
 # FAQs
 ### What can I do with a private server?
