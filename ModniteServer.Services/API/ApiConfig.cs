@@ -10,7 +10,7 @@ namespace ModniteServer.API
     public class ApiConfig
     {
         public const string ConfigFile = @"\config.json";
-        public const ushort configVersion = 3; 
+        public const int configVersion = 5; 
         public const ushort DefaultApiPort = 60101;
         public const ushort DefaultXmppPort = 443;
         public const ushort DefaultMatchmakerPort = 60103;
@@ -129,37 +129,6 @@ namespace ModniteServer.API
                 "HomebaseBannerColor:defaultcolor19",
                 "HomebaseBannerColor:defaultcolor20",
                 "HomebaseBannerColor:defaultcolor21",
-
-                "HomebaseBannerIcon:standardbanner1",
-                "HomebaseBannerIcon:standardbanner2",
-                "HomebaseBannerIcon:standardbanner3",
-                "HomebaseBannerIcon:standardbanner4",
-                "HomebaseBannerIcon:standardbanner5",
-                "HomebaseBannerIcon:standardbanner6",
-                "HomebaseBannerIcon:standardbanner7",
-                "HomebaseBannerIcon:standardbanner8",
-                "HomebaseBannerIcon:standardbanner9",
-                "HomebaseBannerIcon:standardbanner10",
-                "HomebaseBannerIcon:standardbanner11",
-                "HomebaseBannerIcon:standardbanner12",
-                "HomebaseBannerIcon:standardbanner13",
-                "HomebaseBannerIcon:standardbanner14",
-                "HomebaseBannerIcon:standardbanner15",
-                "HomebaseBannerIcon:standardbanner16",
-                "HomebaseBannerIcon:standardbanner17",
-                "HomebaseBannerIcon:standardbanner18",
-                "HomebaseBannerIcon:standardbanner19",
-                "HomebaseBannerIcon:standardbanner20",
-                "HomebaseBannerIcon:standardbanner21",
-                "HomebaseBannerIcon:standardbanner22",
-                "HomebaseBannerIcon:standardbanner23",
-                "HomebaseBannerIcon:standardbanner24",
-                "HomebaseBannerIcon:standardbanner25",
-                "HomebaseBannerIcon:standardbanner26",
-                "HomebaseBannerIcon:standardbanner27",
-                "HomebaseBannerIcon:standardbanner28",
-                "HomebaseBannerIcon:standardbanner29",
-                "HomebaseBannerIcon:standardbanner30",
                 "HomebaseBannerIcon:standardbanner31"
             };
 
@@ -184,7 +153,10 @@ namespace ModniteServer.API
 #endif
             config.Season = 12;
             config.AutoLogin = true;
-            config.ClientEvents = new List<string>();
+            config.ClientEvents = new HashSet<string>
+            {
+                "LobbySeason" + config.Season
+            };
             return config;
         }
 
@@ -217,9 +189,9 @@ namespace ModniteServer.API
         /// </summary>
         public ushort Port { get; set; }
         /// <summary>
-        /// Gets or sets the port for the API server.
+        /// Gets or sets the CFGVersion for the API server.
         /// </summary>
-        public ushort CfgVersion { get; set; }
+        public int CfgVersion { get; set; }
         /// <summary>
         /// Gets or sets the port for the XMPP server.
         /// </summary>
@@ -269,7 +241,7 @@ namespace ModniteServer.API
         /// <summary>
         /// Gets or sets the list of events.
         /// </summary>
-        public List<string> ClientEvents { get; set; }
+        public HashSet<string> ClientEvents { get; set; }
 
         /// <summary>
         /// Gets or sets the current season (clients will need to restart)

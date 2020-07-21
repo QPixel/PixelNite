@@ -88,7 +88,7 @@
                     <TextBox x:Name="coreItems" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Left" Height="251" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="332" AcceptsReturn="True" AcceptsTab="True" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="Season/Battle Pass/Misc">
                 <Grid Background="White">
                     <Label x:Name="eeeeee" Content="Season (Global Value)" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="125" Height="36"/>
@@ -102,6 +102,8 @@
                     <Label x:Name="label1_Copy1" Content="!! RESTART FORTNITE AFTER EDITING SEASON !!" HorizontalAlignment="Left" Margin="10,184,0,0" VerticalAlignment="Top" Height="27" Width="332" HorizontalContentAlignment="Center" Background="White" Foreground="Red"/>
                     <Label x:Name="eee2_Copy" Content="Battle Stars" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="125" Height="36"/>
                     <TextBox x:Name="Stars" HorizontalAlignment="Left" Height="36" Margin="140,92,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="202"/>
+                    <TextBox x:Name="eventFlags" ScrollViewer.VerticalScrollBarVisibility="Auto" HorizontalAlignment="Right" Height="251" Margin="0,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="257" AcceptsReturn="True" AcceptsTab="True"/>
+                    <Label x:Name="eeeeee_Copy" Content="EventFlags" HorizontalAlignment="Left" Margin="344,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.192" Width="125" Height="36"/>
                 </Grid>
             </TabItem>
         </TabControl>

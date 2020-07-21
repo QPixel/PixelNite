@@ -91,6 +91,12 @@ namespace ModniteServer.Commands
                     }
                     window.athenaItems.Text = athenaItems;
 
+                    string eventItems = "";
+                    foreach (string item in ApiConfig.Current.ClientEvents.ToArray())
+                    {
+                        eventItems = eventItems + item + "\n";
+                    }
+                    window.eventFlags.Text = eventItems;
 
                     string coreItems = "";
                     foreach (string item in account.CoreItems.ToArray())
@@ -138,6 +144,7 @@ namespace ModniteServer.Commands
 
                     var athenaafter = window.athenaItems.Text.Replace(",", "").Replace(" ", "").Replace("\"", "").Replace("\r", "").Replace("   ", "").Split('\n');
                     var coreafter = window.coreItems.Text.Replace(",", "").Replace(" ", "").Replace("\"", "").Replace("\r", "").Replace("   ", "").Split('\n');
+                    var eventsAfter = window.eventFlags.Text.Replace(",", "").Replace(" ", "").Replace("\"", "").Replace("\r", "").Replace("   ", "").Split('\n');
                     if (athenaafter[athenaafter.Length - 1] == "")
                         account.AthenaItems = athenaafter.Take(athenaafter.Length - 1).ToHashSet();
                     else
@@ -148,6 +155,15 @@ namespace ModniteServer.Commands
                     else
                         account.CoreItems = coreafter.ToHashSet();
 
+                    if (eventsAfter[eventsAfter.Length - 1] == "")
+                    {
+                        ApiConfig.Current.ClientEvents = eventsAfter.Take(eventsAfter.Length - 1).ToHashSet();
+                    }
+                    else
+                    {
+                        ApiConfig.Current.ClientEvents = eventsAfter.ToHashSet();
+                    }
+                        
 
 
                     // cleanup - favorite_character etc should be in class, and indexed!!

@@ -6,7 +6,7 @@ namespace ModniteServer.API.Controllers
 {
     internal sealed class ContentController : Controller
     {
-        [Route("GET", "/content/api/pages/fortnite-game")]
+        [Route("GET", "/content/api/pages/fortnite-game/")]
         public void GetNews()
         {
             var response = new

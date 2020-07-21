@@ -22,36 +22,6 @@ namespace ModniteServer.API.Controllers
                     activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
                 });
             }
-            clientEvents.Add(new
-            {
-                eventType = "FEC01",
-                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
-                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
-            });
-            clientEvents.Add(new
-            {
-                eventType = "FEC02",
-                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
-                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
-            });
-            clientEvents.Add(new
-            {
-                eventType = "FEC03",
-                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
-                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
-            });
-            clientEvents.Add(new
-            {
-                eventType = "FLA01",
-                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
-                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
-            });
-            clientEvents.Add(new
-            {
-                eventType = "FLCD01",
-                activeUntil = DateTime.Now.Date.AddDays(7).ToDateTimeString(),
-                activeSince = DateTime.Now.Date.AddDays(-1).ToDateTimeString()
-            });
             var response = new
             {
                 channels = new Dictionary<string, object>

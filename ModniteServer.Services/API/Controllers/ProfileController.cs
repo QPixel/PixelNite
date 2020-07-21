@@ -49,12 +49,56 @@ namespace ModniteServer.API.Controllers
                     QueryCreativeProfile();
                     break;
 
+                case "collections":
+                    QueryCollectionsProfile();
+                    break;
+
                 default:
-                    Response.StatusCode = 500;
+                    QueryProfileError(profileId);
                     break;
             }
         }
-
+        private void QueryCollectionsProfile()
+        {
+            var response = new
+            {
+                profileRevision = 1,
+                profileId = "collections",
+                profileChangesBaseRevision = 1,
+                profileChanges = new List<object>
+                {
+                    new
+                    {
+                        changeType = "fullProfileUpdate",
+                        profile = new
+                        {
+                            _id = _accountId, // not really account id but idk
+                            created = DateTime.Now.ToDateTimeString(),
+                            updated = DateTime.Now.ToDateTimeString(),
+                            rvn = 1,
+                            wipeNumber = 1,
+                            accountId = _accountId,
+                            profileId = "collections",
+                            version = "pixelnite_release_1260_may_2020",
+                            items = new {},
+                            stats = new
+                            {
+                                attributes = new  {}
+                                }
+                            },
+                            commandRevision = 0
+                        }
+                    },
+                profileCommandRevision = 0,
+                serverTime = DateTime.Now.ToDateTimeString(),
+                responseVersion = 1
+            };
+            Response.StatusCode = 200;
+            Response.ContentType = "application/json";
+            Response.Write(JsonConvert.SerializeObject(response));
+            Log.Information("[ProfileController] Retrieved profile 'collections' {AccountId}{Profile}{Revision}", _accountId, response, _revision);
+        }
+        
         public void QueryCommonCoreProfile()
         {
             var items = _account.CoreItems;
@@ -168,7 +212,24 @@ namespace ModniteServer.API.Controllers
             Response.ContentType = "application/json";
             Response.Write(JsonConvert.SerializeObject(response));
         }
-
+        private void QueryProfileError(string profileId)
+        {
+            var response = new
+            {
+                errorCode = "errors.com.epicgames.modules.profiles.operation_forbidden",
+                errorMessage = $"Unable to find template confiuration for profile {profileId}",
+                messageVars = new string [1]
+                {
+                    profileId
+                },
+                numericErrorCode = 12813,
+                originatingService = "fortnite",
+                intent = "prod-live"
+            };
+            Response.StatusCode = 403;
+            Response.ContentType = "application/json";
+            Response.Write(JsonConvert.SerializeObject(response));
+        }
         private void QueryAthenaProfile()
         {
             var items = _account.AthenaItems;
@@ -286,6 +347,7 @@ namespace ModniteServer.API.Controllers
                         max_level_bonus = 0,
                         level = 1,
                         item_seen = true,
+                        rnd_sel_cnt = 0,
                         xp = 0,
                         variants = new List<object>(),
                         favorite = false
@@ -332,7 +394,7 @@ namespace ModniteServer.API.Controllers
                                         dailyQuestRerolls = 1
                                     },
                                     book_level = _account.PassLevel,
-                                    season_number = ApiConfig.Current.Season,
+                                    season_num = ApiConfig.Current.Season,
                                     season_update = 0,
                                     book_xp = _account.PassXP,
                                     permissions = new List<object>(),
