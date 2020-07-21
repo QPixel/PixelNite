@@ -2,3 +2,7 @@
 ModniteServer/obj
 ModniteServer.Services/obj
 ModniteServer.Services/bin
+libs
+docs
+Launcher
+LauncherWithAccSupport
