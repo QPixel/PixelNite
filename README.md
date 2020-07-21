@@ -1,19 +1,5 @@
 # Modnite Server
-Modnite Server is a private server for Fortnite Battle Royale. Since Fortnite Battle Royale is an online PvP game, there is no way to mod the game without disrupting other players. With Modnite Server, players can host their own server and be free to mod the game without ruining the game for everyone else.
-
-We ❤️ Fortnite and hope this creates an exciting new experience for the game.
-
-![Server screenshot](/docs/screenshot.png)
-![Lobby screenshot](/docs/Version6_10.png)
-
-# Milestones
-✔️ Enable editing of game files and disable TLS
-
-✔️ Reach the lobby
-
-▶️ IN PROGRESS: Get into a match alone
-
-➖ Very limited multiplayer support
+Modnite Server was a private server for Fortnite Battle Royale. I grabbed the source before it was taken down and then after a year I "fixed" it and somewhat got it to work on chapter 2.  If you don't know how to make this work, I won't help you. 
 
 # FAQs
 ### What can I do with a private server?
@@ -21,21 +7,14 @@ At this time, Modnite Server lets you:
 * Get to the lobby
 * Equip anything you want
 
-This is a very early preview. There's not much you can do at this time.
+### How do I create an account?
+Just make sure the Auto Login Feature is disabled in the config file and then type in the command window, "create" followed by the username and password.
 
-### How do I create accounts?
-By default, Modnite Server will automatically create new accounts. Simply login with the email `username@modnite.net`. If the username does not exist, a new account will be created.
+### How do I access this on Fortnite?
+Use one of the countless SSL Bypasses/Injectors. I'm not going to support any issues with this.
 
-For example, logging in as `wumbo@modnite.net` will create a new account with the display name set to `wumbo`.
-![Login example](/docs/login.PNG)
+### Your Code is bad
+I didn't try to make it good. I just wanted it to work.
 
-Alternatively, you may use the `create` command. For example, `create player123 hunter2`.
-
-### Isn't Epic Games testing a custom matchmaking system?
-Sure, but that's not really the point of this project. We want to enable players to mod the game without interfering with other players. Given the PvP nature of Battle Royale, it's unlikely Epic Games would allow modding at all.
-
-### How do I change the item shop?
-To mitigate clickbait and scams, access to the item shop and V-Bucks store is restricted. Modnite Server maintains a perpetual item shop consisting of only default skins with all prices set to 0 V-Bucks. We may eventually open-source the item shop feature, but that won't happen any time soon.
-
-### Will you ever add support for Save the World?
-Save the World is off limits until it becomes free.
+### Why don't the Skins auto update after each update?
+I'm lazy.
