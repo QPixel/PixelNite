@@ -87,9 +87,9 @@ namespace ModniteServer.API.Controllers
                     {"doNotCache", p.doNotCache }
                 })
                 );
-            Response.StatusCode = 200;
+            Response.StatusCode = 404;
             Response.ContentType = "application/json";
-            Response.Write(JsonConvert.SerializeObject(response));
+            //Response.Write(JsonConvert.SerializeObject(response));
 
             /* 
              * [

@@ -14,7 +14,7 @@ namespace ModniteServer.API.Controllers
         /// <summary>
         /// Checks whether the given version and platform needs an update.
         /// </summary>
-        [Route("GET", "/fortnite/api/v2/versioncheck/*")]
+        [Route("GET", "/fortnite/api/v2/versioncheck/*/*")]
         public void CheckVersion()
         {
             if (!Authorize()) return;
